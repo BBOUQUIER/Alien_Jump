@@ -2,7 +2,7 @@
 
 ## Game Overview and Logic
 Alien Jump is a classic game in which the alien tries to jump to earn points by jumping. On your way there will be enemies who will be there to stop you, be careful because if they hit you, it's game over
-![Downloads](Sprites/Readme/pagehome.png)
+![Downloads](Sprites/Readme/Pagehome.png)
 ![Downloads](Sprites/Readme/pagejeu.png)
 ![Downloads](Sprites/Readme/pageabout.png)
 ## Functionality

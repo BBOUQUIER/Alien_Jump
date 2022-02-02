@@ -22,7 +22,25 @@
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
   
-  
+    <style type="text/css">
+    body {
+        background-image: url(/assets/images/123z-2101.w026.n002.56b.p1.56.jpeg);
+        background-position: 50% 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .canvas {
+        padding: 0;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    }
+    </style>
   
   
 </head>
@@ -35,7 +53,7 @@
             <div class="navbar-brand">
                 <span class="navbar-logo">
                     <a href="index.html">
-                        <img src="Sprites/Capture_perso_V.png" alt="Gribouilleur" style="height: 3rem;">
+                        <img src="Sprites/Capture_perso_V.PNG" alt="Gribouilleur" style="height: 3rem;">
                     </a>
                 </span>
                 <span class="navbar-caption-wrap">
@@ -48,30 +66,20 @@
     </nav>
 </section>
 
-<section class="header12 cid-su5yRPYP89 mbr-fullscreen mbr-parallax-background" id="header12-0">
+    <canvas id="canvas" class="canvas">
 
-    
+        <script src="src/player.js"></script>
+        <script src="src/monsters.js"></script>
+        <script src="src/block.js"></script>
+        <script src="src/powerups.js"></script>
+        <script src="src/blockType.js"></script>
+        <script src="src/blockSpawner.js"></script>
+        <script src="src/main.js"></script>
+        </canvas>
 
-    <div class="mbr-overlay" style="opacity: 0.3; background-color: rgb(68, 121, 217);">
-    </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="card col-12 col-md-12 col-lg-9">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <h1 class="card-title mbr-fonts-style mb-3 display-1"><strong>Alien Jump Js</strong></h1>
-                        <p class="mbr-text mbr-fonts-style display-7">Dans Alien Jump, le but est de guider notre petit alien rouge et l'emmener le plus loin possible tout en escivant les chasseurs à votre poursuite.</p>
-                        <div class="mbr-section-btn mt-3">
-                            <a class="btn btn-secondary display-4" href="pagejeu.html"><span class="mobi-mbri mobi-mbri-touch mbr-iconfont mbr-iconfont-btn"></span>Start Game</a>
-                            <a class="btn btn-secondary display-4" href="pageabout.html"><span class="mobi-mbri mobi-mbri-help mbr-iconfont mbr-iconfont-btn"></span>About&nbsp;</a> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
 
+   
+<section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
         
 </body>
 </html>

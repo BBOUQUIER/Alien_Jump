@@ -1,43 +1,34 @@
 function block() {
     this.x;
     this.y;
-    this.width = 100;
-    this.height = 15;
+    this.width = 90;
+	this.height = 50;
     this.powerup;
     this.type;
-    this.Img = new Image()
-    this.Img.src = 'Sprites/ovni.png'
     this.monster;
     this.direction = "right";
     this.moveTime = 10;
-    this.img = "Sprites/ovni.png"
-   
+    this.img = new Image();
+    this.img.src = "Sprites/ovnijeurecad.png";
+    
 
     this.draw = function() {
-        if (this.type === "break") {
-            ctx.fillStyle = "#876537";
-        } else if (this.type === "sideways") {
-            ctx.fillStyle = "#14a7c8";
-        } else {
-            ctx.fillStyle = "#6fbb1d";
-        }
-
         if (this.monster === 0) {
-            ctx.fillRect(this.x, this.y, this.width, this.height);
+            if (this.type === "break") {
+                breakFunctions[this.type].draw(this.x, this.y, this.width, this.height);
+            } else if (this.type === "sideways") {
+                sideFunctions[this.type].draw(this.x, this.y, this.width, this.height);
+            } else {
+                ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+            }
+        } else if (this.monster === "smallRed") {
+            monsterFunctions[this.monster].draw(this.x, this.y, this.width, this.height);
         } else {
-            monsterFunctions[this.monster].draw(this.x, this.y);
+            coeurFunctions[this.monster].draw(this.x, this.y, this.width, this.height)
         }
 
         if (this.powerup === "spring") {
-            ctx.fillStyle = "grey";
-            ctx.fillRect(this.x + 35, this.y - 10, 30, 10);
-        } else if (this.powerup === "springBoots") {
-            ctx.fillStyle = "blue";
-            ctx.fillRect(this.x + 30, this.y - 25, 15, 10);
-            ctx.fillRect(this.x + 53, this.y - 25, 15, 10);  
-            ctx.fillStyle = "grey";
-            ctx.fillRect(this.x + 30, this.y - 15, 15, 15);
-            ctx.fillRect(this.x + 53, this.y - 15, 15, 15);
+            springFunctions[this.powerup].draw(this.x + 35, this.y -10, this.width, this.height);
         }
     }
 

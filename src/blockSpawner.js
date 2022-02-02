@@ -28,7 +28,7 @@ function blockSpawner() {
     
             blocks[i].x = Math.random()*(screenWidth - blocks[i].width);
     
-            if (blocks[i].type === "break" || blocks[i-1].type === "break") {
+            if (blocks[i].type === "break" || blocks[i-1].type === "break" || blocks[i].monster === "coeur" || blocks[i-1].monster === "coeur") {
                 blocks[i].y = (blocks[i-1].y) - (((Math.random()*(80 + (difficulty * 25))) + 30) / 2);
             } else if (blocks[i].monster !== 0) {
                 blocks[i].y = (blocks[i-1].y) - ((Math.random()*(80 + (difficulty*25)))+50);

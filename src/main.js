@@ -1,8 +1,8 @@
-var c = document.querySelector("#canvas");
+var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 
 var screenWidth = 400;
-var screenHeight = 800;
+var screenHeight = 700;
 c.width = screenWidth;
 c.height = screenHeight;
 document.body.appendChild(c);
@@ -20,8 +20,6 @@ var startButton;
 var imageStart = new Image();
 imageStart.src = 'Sprites/bouton start.png'
 ctx.drawImage(imageStart, 300, 200);
-
-
 //Variables
 const gravity = 0.34;
 var holdingLeftKey = false;
@@ -32,18 +30,16 @@ var difficulty = 0;
 var lowestBlock = 0;
 var score = 0;
 var yDistanceTravelled = 0;
-
+var vie = 6;
 var blocks = [];
 var powerups = [];
-
+var highScore = 0;
 //Time variables
 var fps = 60;
 var now;
 var then = Date.now();
 var interval = 1000/fps;
 var delta;
-
-
 
 function keydown(e) {
     if (e.keyCode === 37) {
@@ -52,7 +48,9 @@ function keydown(e) {
         holdingRightKey = true;
     }
 
-    if (e.keyCode === 13 && dead) {
+    if (e.keyCode === 82 && dead) {
+        vie = 6
+        highScore = score
         blocks = [];
         lowestBlock = 0;
         difficulty = 0;
@@ -87,13 +85,35 @@ function keyup(e) {
 
 function showScore() {
     if (yDistanceTravelled > score) {
-        score = Math.round(yDistanceTravelled);
+        score = Math.round(yDistanceTravelled / 10);
     }
 
     ctx.font = "36px Arial";
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "White";
     ctx.textAlign = "left";
-    ctx.fillText(score, 1, 780); 
+    ctx.fillText(score, 15, 680); 
+}
+
+function showLife() {
+  var  coeurr = 15
+    vie = vie
+    var vieimg = new Image();
+    vieimg.src = 'Sprites/powerups/coeur.png'
+    for(let i = vie-1; i>= 0;i--){
+        ctx.drawImage(vieimg, coeurr, 10, 25, 25) 
+        coeurr += 25
+    }
+
+}
+
+function showFps(){
+    var thisLoop = new Date();
+    var fps = 1000 / (thisLoop - then);
+    lastLoop = thisLoop;
+    ctx.font = "25px Arial";
+    ctx.fillStyle = "#0DFF16FF";
+    ctx.textAlign = "";
+    ctx.fillText(Math.ceil(fps), 360, 30); 
 }
 
 blocks.push(new block);
@@ -107,7 +127,9 @@ blockSpawner();
 
 function loop() {
     requestAnimationFrame(loop);
-
+    if (vie == 0) {
+        dead = true
+    }
     //This sets the FPS to 60
     now = Date.now();
     delta = now - then;
@@ -123,31 +145,32 @@ function loop() {
                 blocks[i].draw();
             }
         }
-
         player.update();
         player.draw();
-
+        showLife();
         showScore();
-
+        showFps();
         ctx.fill();
         then = now - (delta % interval);
     }
 }
 
-StartGameBtn.addEventListener('click', (event) => {
-    loop();
-    MenuEl.style.display = 'none'
-} )
+loop()
 
-Setting.addEventListener('click', (event) => {
-    loop();
-    console.log("paramêtre");
-})
+// StartGameBtn.addEventListener('click', (event) => {
+//     loop();
+//     MenuEl.style.display = 'none'
+// } )
 
-ExitGame.addEventListener('click', (event) => {
-    close()
-})
+// Setting.addEventListener('click', (event) => {
+//     loop();
+//     console.log("paramêtre");
+// })
 
-AboutGame.addEventListener('click', (event) => {
-    var popup = document.getElementById("AboutGameTouch")
-})
+// ExitGame.addEventListener('click', (event) => {
+//     close()
+// })
+
+// AboutGame.addEventListener('click', (event) => {
+//     var popup = document.getElementById("AboutGameTouch")
+// })
